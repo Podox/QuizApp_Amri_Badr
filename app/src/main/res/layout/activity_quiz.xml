@@ -9,8 +9,8 @@
 
     <SurfaceView
         android:id="@+id/cameraPreview"
-        android:layout_width="185dp"
-        android:layout_height="98dp"
+        android:layout_width="221dp"
+        android:layout_height="112dp"
         android:layout_marginTop="16dp"
         android:visibility="visible" />
 

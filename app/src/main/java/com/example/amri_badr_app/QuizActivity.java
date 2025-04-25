@@ -203,11 +203,28 @@ public class QuizActivity extends AppCompatActivity {
 
     private void openCamera() {
         try {
-            camera = Camera.open();
+            int cameraId = getFrontFacingCameraId();
+            if (cameraId == -1) {
+                Toast.makeText(this, "No front camera found", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            camera = Camera.open(cameraId);
+            camera.setDisplayOrientation(90); // if you need portrait mode preview
             camera.setPreviewDisplay(surfaceHolder);
             camera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
+
+    private int getFrontFacingCameraId() {
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+        int numberOfCameras = Camera.getNumberOfCameras();
+        for (int i = 0; i < numberOfCameras; i++) {
+            Camera.getCameraInfo(i, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                return i;
+            }
+        }
+        return -1; // No front camera found
+    }}
