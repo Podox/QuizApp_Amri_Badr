@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amri_badr_app">
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -10,29 +16,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amri_Badr_App">
         <activity
-            android:name="com.example.amri_badr_app.Score"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name="com.example.amri_badr_app.Quiz5"
+            android:name=".QuizActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.Quiz4"
+            android:name=".Score"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Quiz5"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.Quiz3"
+            android:name=".Quiz4"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.Quiz2"
+            android:name=".Quiz3"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.Quiz1"
+            android:name=".Quiz2"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.Register"
+            android:name=".Quiz1"
             android:exported="false" />
         <activity
-            android:name="com.example.amri_badr_app.MainActivity"
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

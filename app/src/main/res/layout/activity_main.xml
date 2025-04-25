@@ -10,9 +10,10 @@
     >
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="371dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/world" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

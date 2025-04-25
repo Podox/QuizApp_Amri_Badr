@@ -1,47 +1,50 @@
 package com.example.amri_badr_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Score extends AppCompatActivity {
-    Button bLogout, bTry;
-    ProgressBar progressBar;
-    TextView tvScore;
-    int score;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        tvScore =(TextView) findViewById(R.id.tvScore);
-        progressBar=(ProgressBar) findViewById(R.id.progressBar);
-        bLogout=(Button) findViewById(R.id.bLogout);
-        bTry=(Button) findViewById(R.id.bTry);
-        Intent intent=getIntent();
-        score=intent.getIntExtra("score",0) ;
-        progressBar.setProgress(100*score/5);
-        tvScore.setText(100*score/5+" %");
-        //Toast.makeText(getApplicationContext(),score+"",Toast.LENGTH_SHORT).show();
-        bLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Merci de votre Participation !", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
-        bTry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Score.this,Quiz1.class));
-            }
+
+        TextView tvScore = findViewById(R.id.tvScore);
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        Button bTry = findViewById(R.id.bTry);
+        Button bLogout = findViewById(R.id.bLogout);
+
+        // Get score and total from intent
+        int score = getIntent().getIntExtra("score", 0);
+        int total = getIntent().getIntExtra("total", 1);
+
+        // Calculate percentage
+        int percentage = (int) ((score * 100.0) / total);
+
+        // Update UI
+        tvScore.setText(String.format("%d%%", percentage));
+        progressBar.setProgress(percentage);
+
+        // Try again button: Restart quiz
+        bTry.setOnClickListener(v -> {
+            Intent intent = new Intent(Score.this, QuizActivity.class);
+            startActivity(intent);
+            finish();
         });
 
+        // Logout button: Sign out and go to LoginActivity
+        bLogout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(Score.this, MainActivity.class); // Replace with your login activity
+            startActivity(intent);
+            finish();
+        });
     }
 }
