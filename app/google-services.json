@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "505909392059",
+    "project_id": "amribadrapp",
+    "storage_bucket": "amribadrapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505909392059:android:8af53345f20f96dcc62f9e",
+        "android_client_info": {
+          "package_name": "com.example.amri_badr_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmx4Z8NHZyoY_b_W2yt7NcKbSvwdjRjD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
